@@ -18,8 +18,6 @@ const contactSchema = mongoose.Schema({
         type:String,
         required:false
     }
-
-    
 },
     {
         timestamps:true
