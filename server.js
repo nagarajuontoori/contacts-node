@@ -3,11 +3,12 @@ const dotenv = require("dotenv").config();
 
 const app =express()
 const configureDb = require("./database");
-const { default: mongoose } = require("mongoose");
+const  mongoose  = require("mongoose");
+const cors = require('cors');
 const Contact = require("./app/model/contacts_model")
 
 configureDb();
-
+app.use(cors());
 const port  = process.env.PORT || 5000
 app.use(express.json())
 
@@ -34,7 +35,7 @@ app.get("/contact" , async (req,res) =>{
   
     res.status(200).json(updateContact);
   });
-  
+
 app.delete("/contact/:id", async (req,res) => {
 const {id} = req.params;
 const deleteContact = await Contact.findByIdAndDelete(id)
